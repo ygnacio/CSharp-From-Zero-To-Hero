@@ -73,7 +73,7 @@ namespace BootCamp.Chapter
                 Console.WriteLine("Failed calculating BMI. Reason:");
                 if (weight <= 0)
                     Console.WriteLine("Weight cannot be equal or less than zero, but was " + weight + ".");
-                if (height == 0 && weight == 0)  
+                if (EqualFloat(height, 0) && EqualFloat(weight, 0))  
                     Console.WriteLine("Height cannot be less than zero, but was " + height + ".");
                 else if (height <= 0)
                     Console.WriteLine("Height cannot be equal or less than zero, but was " + height + ".");
@@ -82,6 +82,12 @@ namespace BootCamp.Chapter
 
             float bmi = weight / (height * height);
             return bmi;
+        }
+
+        public static bool EqualFloat(float value1, float value2)
+        {
+            float epsilon = 0.00001f;
+            return Math.Abs(value1 - value2) < epsilon;
         }
 
         private static void PersonData(int number)
